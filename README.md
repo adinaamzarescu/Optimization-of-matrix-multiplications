@@ -179,7 +179,11 @@ ________________________________________________________________________________
 
 To create the graph, I created a python script, plot_functions.py
 
-![graph](https://github.com/adinaamzarescu/Tema2_ASC/blob/main/grafice/graph.png)
+![graph](https://github.com/adinaamzarescu/Tema2_ASC/blob/main/grafice/graph_all_functions.png)
+
+To analyze the functions separately:
+
+![graph2](https://github.com/adinaamzarescu/Tema2_ASC/blob/main/grafice/graph_separate_functions.png)
 
 As the input size N increases, the runtime of all three functions also 
 increases. However, the rate at which the runtime increases differs between the 
