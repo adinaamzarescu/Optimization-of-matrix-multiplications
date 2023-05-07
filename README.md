@@ -59,6 +59,8 @@ This code is efficient because it uses the Basic Linear Algebra Subprograms (BLA
 functions, specifically cblas_dtrmm and cblas_dgemm, which are highly optimized for 
 matrix operations. 
 
+_______________________________________________________________________________________________
+
 **The optimized version implementation**
 
 `the code is found in solver_opt.c`
@@ -105,6 +107,7 @@ This code is efficient because it makes use of optimization techniques such as r
 However, it is less efficient than BLAS because BLAS is a highly optimized library specifically 
 designed for linear algebra operations.
 
+_______________________________________________________________________________________________
 
 **The non-optimized version implementation**
 
