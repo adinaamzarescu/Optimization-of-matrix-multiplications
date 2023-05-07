@@ -24,10 +24,45 @@ ________________________________________________________________________________
 * Returns a pointer to the result matrix or NULL if there are NaN or 
 infinity values or memory allocation fails.
 
+Using extra_input the following values will be obtained:
+
+N=400: Time=0.040290
+N=500: Time=0.080949
+N=600: Time=0.131025
+N=700: Time=0.198116
+N=800: Time=0.285428
+N=900: Time=0.396836
+N=1000: Time=0.561678
+N=1100: Time=0.734086
+N=1200: Time=0.934723
+N=1300: Time=1.169696
+N=1400: Time=1.431724
+N=1500: Time=1.822059
+N=1600: Time=2.179854
+
 This code is efficient because it uses the Basic Linear Algebra Subprograms (BLAS) library 
 functions, specifically cblas_dtrmm and cblas_dgemm, which are highly optimized for 
 matrix operations. 
 
+**The optimized version implementation**
 
+`the code is found in solver_opt.c`
+
+* The code defines functions for matrix multiplication and dot product calculation.
+* The functions are used to compute matrix C, which is the sum of two other matrices.
+* The code dynamically allocates memory for the matrices and frees it after the computation.
+* The matrix computations are performed using pointer arithmetic and register optimization.
+* The code returns the resulting matrix C as a double pointer.
+
+Using extra_input the following values will be obtained:
+
+
+
+This code is efficient because it makes use of optimization techniques such as register variables. 
+However, it is less efficient than BLAS because BLAS is a highly optimized library specifically 
+designed for linear algebra operations.
+
+
+**The non-optimized version implementation**
 
 _______________________________________________________________________________________________
