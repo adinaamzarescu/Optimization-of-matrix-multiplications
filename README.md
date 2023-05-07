@@ -181,14 +181,18 @@ To create the graph, I created a python script, plot_functions.py
 
 ![graph](https://github.com/adinaamzarescu/Tema2_ASC/blob/main/grafice/graph_all_functions.png)
 
-To analyze the functions separately:
-
-![graph2](https://github.com/adinaamzarescu/Tema2_ASC/blob/main/grafice/graph_separate_functions.png)
-
 As the input size N increases, the runtime of all three functions also 
 increases. However, the rate at which the runtime increases differs between the 
 functions. The blas function has the lowest increase in runtime as N increases, 
 followed by opt, and then neopt.
+
+To analyze the functions separately:
+
+![graph2](https://github.com/adinaamzarescu/Tema2_ASC/blob/main/grafice/graph_separate_functions.png)
+
+The reason why the graph is faster for multiples of 4 is most likely due to the way CPUs handle
+memory and cache. In most modern CPUs, the memory is organized into "cache lines" which are blocks
+of memory that are typically 64 bytes in size. 
 
 _______________________________________________________________________________________________
 
@@ -208,24 +212,32 @@ ________________________________________________________________________________
 
 `neopt.cache`
 
-The output shows that the program made 1,545 instruction cache misses and 113,277 data cache 
-misses, which is a very low miss rate considering the program executed 5,924,927,018 
-instructions and accessed 2,962,907,725 data references. 
+Looking at the output, we see that the program executed with N=400 and took 33.522308 
+seconds to complete. The program made 5,924,927,004 instruction references, 
+out of which 1,620 were instruction cache (I1) misses and 1,545 were last-level 
+instruction cache (LLi) misses. This indicates that the instruction cache hit 
+rate was high, at 99.99%. Similarly, the data cache (D1) miss rate was 3.2%, 
+with 94,362,179 data cache misses out of 2,962,907,724 data references. 
+The last-level data cache (LLd) miss rate was 0.0%, with 113,276 misses 
+out of 94,363,799 references.
 
 `opt_m.cache`
 
-The cache statistics show that the program has a very low instruction and data cache miss rate, 
-which is good for performance. However, the program has a high branch misprediction rate, which 
-could be a performance bottleneck.
+Based on the output, it seems like the program had very few instruction cache 
+misses (I1 misses and LLi misses both have a miss rate of 0.00%), which means that 
+the instructions were efficiently cached. However, the data cache misses 
+(D1 misses and LLd misses) are quite high, with a miss rate of 19.9% and 
+0.0%, respectively. This suggests that the program is not efficiently 
+using the data cache.
 
 However the program has improved in terms of cache misses and branch mispredictions compared 
 to the previous version.
 
 `blas.cache`
 
-From the output, we can see that the program has a low cache miss rate (0.1% for LLd and 0.0% for LL) 
-and a low branch misprediction rate (1.4%). This suggests that the program is well optimized 
-for the cache and branch-prediction behavior.
+From the output, we can see that the cache miss rates for both instruction and data caches 
+are relatively low, with only 0.01% and 1.7% miss rates respectively. The LL cache miss rate 
+is also low for data, at 0.1%. 
 
 The program is performing better in terms of cache usage and branch prediction compared to 
 the previous two programs.
@@ -237,6 +249,7 @@ ________________________________________________________________________________
 * BLAS is the most optimized version
 * While reducing the number of memory allocations can sometimes improve performance, it's not 
 always the most important factor in determining the efficiency of a program.
+* Using the BLAS implementation leads to a significant reduction in cache misses.
 
 _______________________________________________________________________________________________
 
