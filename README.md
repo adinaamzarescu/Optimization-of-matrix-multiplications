@@ -210,6 +210,9 @@ ________________________________________________________________________________
 
 ## Cache
 
+You can see the results of the command **valgrind --tool=cachegrind --branch-sim=yes** in the
+cache folder where there are 3 files corresponding to the 3 functions.
+
 `neopt.cache`
 
 Looking at the output, we see that the program executed with N=400 and took 33.522308 
