@@ -11,8 +11,8 @@
 #include "cblas.h"
 
 void allocate_matrices(int N, double **result_matrix, double **A_times_A) {
-    *result_matrix = (double*) calloc(N * N, sizeof(double));
-    *A_times_A = (double*) calloc(N * N, sizeof(double));
+    *result_matrix = (double*) malloc(N * N * sizeof(double));
+    *A_times_A = (double*) malloc(N * N * sizeof(double));
 }
 
 double* my_solver(int N, double *A, double *B) {
