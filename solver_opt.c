@@ -42,8 +42,7 @@ double* my_solver(int N, double *A, double* B) {
 }
 
 
-void matrix_multiply(double* A_B, double* A, double* B, int N)
-{
+void matrix_multiply(double* A_B, double* A, double* B, int N) {
     // Loop variables and temporary variables as registers
     register int i, j, k;
     register double* A_B_ptr;
@@ -51,27 +50,24 @@ void matrix_multiply(double* A_B, double* A, double* B, int N)
     register double* B_ptr;
     register double s;
     
+    // Iterate over the rows of matrix A_B
     for (i = 0; i < N; ++i) {
-        // Compute pointer to start of row i in output matrix A_B
+        // Setting the pointer to the start of row i in matrix A_B
         A_B_ptr = A_B + i * N;
-        
+        // Iterate over the columns of matrix A_B
         for (j = 0; j < N; ++j) {
+            // Initialize the sum to zero
             s = 0;
-            
-            // Compute pointer to start of row i in matrix A
+            // Setting the pointer to the start of row i in matrix A
             A_ptr = A + i * N + i;
-            
-            // Compute pointer to element (i, j) in matrix B
+            // Setting the pointer to the start of column j in matrix B
             B_ptr = B + i * N + j;
-            
-            // Matrix multiplication of row i in matrix A and column j in matrix B
-            for (k = i; k < N; k += 4, A_ptr += 4, B_ptr += 4 * N) {
-                // Using loop unrolling and pointer arithmetic to load 4 consecutive elements from matrix A and matrix B
-                // and compute their product, and add it to the running total s
-                s += A_ptr[0] * B_ptr[0] + A_ptr[1] * B_ptr[N] + A_ptr[2] * B_ptr[2 * N] + A_ptr[3] * B_ptr[3 * N];
+            // Iterate over the elements in row i of matrix A and column j of matrix B
+            for (k = i; k < N; ++k, ++A_ptr, B_ptr += N) {
+                // Compute the dot product of row i of matrix A and column j of matrix B
+                s += *A_ptr * *B_ptr;
             }
-            
-            // The final result of the dot product of row i in matrix A and column j in matrix B
+            // Storing the result in the current element of matrix A_B
             *A_B_ptr++ = s;
         }
     }
@@ -161,7 +157,7 @@ void matrix_addition(double* C, double* A_B_A_transpose, double* B_B_transpose, 
 
 double* allocate_matrix(int rows, int cols)
 {
-    double* ptr = malloc(rows * cols * sizeof(double));
+    double* ptr = calloc(rows * cols, sizeof(double));
     if (ptr == NULL) {
         // printf("Error: failed to allocate memory for %d x %d matrix\n", rows, cols);
         exit(EXIT_FAILURE);
