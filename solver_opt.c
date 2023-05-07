@@ -52,7 +52,7 @@ void compute_C(double* A_B_A_transpose, double* B_B_transpose, double* C, int N)
 
 double* allocate_matrix(int rows, int cols)
 {
-    double* ptr = calloc(rows * cols, sizeof(double));
+    double* ptr = malloc(rows * cols * sizeof(double));
     if (ptr == NULL) {
         // printf("Error: failed to allocate memory for %d x %d matrix\n", rows, cols);
         exit(EXIT_FAILURE);
