@@ -65,18 +65,21 @@ ________________________________________________________________________________
 `the code is found in solver_opt.c`
 
 Additional functions: 
-        * allocate_matrix: dynamically allocates memory for a matrix of a given size.
-        * free_matrices: frees the memory allocated for several matrices.
-        * allocate_all_matrices: allocates the memory for several matrices used in the computations.
-        * matrix_multiply: performs a matrix multiplication operation between two matrices A and B, storing the * result in a pre-allocated matrix A_B.
-        * matrix_multiply_transpose: performs a matrix multiplication operation between the matrix A_B and the transpose of A, storing the result in a pre-allocated matrix A_B_A_transpose.
-        * matrix_multiply_b_transpose_b: performs a matrix multiplication operation between the transpose of B and B, storing the result in a pre-allocated matrix B_B_transpose.
-        * matrix_addition: performs a matrix addition operation between two matrices, storing the result in a pre-allocated matrix C.
+1. allocate_matrix: dynamically allocates memory for a matrix of a given size.
+2. free_matrices: frees the memory allocated for several matrices.
+3. allocate_all_matrices: allocates the memory for several matrices used in the computations.
+4. matrix_multiply: performs a matrix multiplication operation between two matrices A and B, storing the * result in a pre-allocated matrix A_B.
+5. matrix_multiply_transpose: performs a matrix multiplication operation between the matrix A_B and the transpose of A, storing the result in a pre-allocated matrix A_B_A_transpose.
+6. matrix_multiply_b_transpose_b: performs a matrix multiplication operation between the transpose of B and B, storing the result in a pre-allocated matrix B_B_transpose.
+7. matrix_addition: performs a matrix addition operation between two matrices, storing the result in a pre-allocated matrix C.
 
-* The functions are used to compute matrix C, which is the sum of two other matrices.
-* The code dynamically allocates memory for the matrices and frees it after the computation.
-* The matrix computations are performed using pointer arithmetic and register optimization.
-* The code returns the resulting matrix C as a double pointer.
+The functions are used to compute matrix C, which is the sum of two other matrices.
+
+The code dynamically allocates memory for the matrices and frees it after the computation.
+
+The matrix computations are performed using pointer arithmetic and register optimization.
+
+The code returns the resulting matrix C as a double pointer.
 
 Using _**extra_input**_ the following values will be obtained:
 
