@@ -10,14 +10,19 @@
 
 #include "cblas.h"
 
-void allocate_matrices(int N, double **result_matrix, double **A_times_A) {
-    *result_matrix = (double*) malloc(N * N * sizeof(double));
-    *A_times_A = (double*) malloc(N * N * sizeof(double));
+void alloc_matrix(int N, double **result_matrix, double **A_times_A) {
+    *result_matrix = (double*) calloc(N * N, sizeof(double));
+    *A_times_A = (double*) calloc(N * N, sizeof(double));
 }
 
 double* my_solver(int N, double *A, double *B) {
     double *result_matrix, *A_times_A;
-    allocate_matrices(N, &result_matrix, &A_times_A);
+    alloc_matrix(N, &result_matrix, &A_times_A);
+    
+    // Copy the values from B to result_matrix
+    for (int i = 0; i < N * N; i++) {
+        result_matrix[i] = B[i];
+    }
     
     if (result_matrix == NULL || A_times_A == NULL) {
         // memory allocation failed
@@ -27,8 +32,8 @@ double* my_solver(int N, double *A, double *B) {
     }
 
     // Calculate C = B * A^T using dtrmm and dgemm
-    cblas_dtrmm(CblasRowMajor, CblasLeft, CblasUpper, CblasNoTrans, CblasNonUnit, N, N, 1.0, A, N, B, N);
-    cblas_dtrmm(CblasRowMajor, CblasRight, CblasUpper, CblasTrans, CblasNonUnit, N, N, 1.0, A, N, B, N);
+    cblas_dtrmm(CblasRowMajor, CblasLeft, CblasUpper, CblasNoTrans, CblasNonUnit, N, N, 1.0, A, N, result_matrix, N);
+    cblas_dtrmm(CblasRowMajor, CblasRight, CblasUpper, CblasTrans, CblasNonUnit, N, N, 1.0, A, N, result_matrix, N);
     cblas_dgemm(CblasRowMajor, CblasTrans, CblasTrans, N, N, N, 1.0, B, N, B, N, 1.0, A_times_A, N);
 
     // Calculate C += A^2 * B using daxpy
