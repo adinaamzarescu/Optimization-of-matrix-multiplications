@@ -71,6 +71,19 @@ matrix operations.
 
 Using extra_input the following values will be obtained:
 
+        N=400: Time=0.368568
+        N=500: Time=0.713883
+        N=600: Time=1.231407
+        N=700: Time=1.942642
+        N=800: Time=2.904663
+        N=900: Time=4.118597
+        N=1000: Time=5.652847
+        N=1100: Time=7.523404
+        N=1200: Time=9.823234
+        N=1300: Time=12.547029
+        N=1400: Time=15.774285
+        N=1500: Time=19.510212
+        N=1600: Time=23.775011
 
 
 This code is efficient because it makes use of optimization techniques such as register variables. 
