@@ -43,7 +43,7 @@ double* my_solver(int N, double *A, double *B)
 
 double* allocate_matrix(int rows, int cols)
 {
-    double* ptr = malloc(rows * cols * sizeof(double));
+    double* ptr = calloc(rows * cols, sizeof(double));
     if (ptr == NULL) {
         // printf("Error: failed to allocate memory for %d x %d matrix\n", rows, cols);
         exit(EXIT_FAILURE);
