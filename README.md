@@ -179,7 +179,66 @@ To create the graph, I created a python script, plot_functions.py
 
 ![graph](https://github.com/adinaamzarescu/Tema2_ASC/blob/main/grafice/graph.png)
 
-Overall, the graph shows that the blas function is the most efficient, 
+As the input size N increases, the runtime of all three functions also 
+increases. However, the rate at which the runtime increases differs between the 
+functions. The blas function has the lowest increase in runtime as N increases, 
 followed by opt, and then neopt.
+
+_______________________________________________________________________________________________
+
+## Memory management
+
+You can see the results of the command **valgrind --leak-check=full --tool=memcheck --track-origins=yes** 
+in the memory folder where there are 3 files corresponding to the 3 functions.
+
+The blas function contains 78 memory allocations, the optimized 10 and the non-optimized 10.
+
+While it's true that memory allocations can be expensive in terms of time and resources, the 
+efficiency of this code is not solely determined by the number of memory allocations it uses.
+
+_______________________________________________________________________________________________
+
+## Cache
+
+neopt.cache
+
+The output shows that the program made 1,545 instruction cache misses and 113,277 data cache 
+misses, which is a very low miss rate considering the program executed 5,924,927,018 
+instructions and accessed 2,962,907,725 data references. 
+
+opt_m.cache 
+
+The cache statistics show that the program has a very low instruction and data cache miss rate, 
+which is good for performance. However, the program has a high branch misprediction rate, which 
+could be a performance bottleneck.
+
+However the program has improved in terms of cache misses and branch mispredictions compared 
+to the previous version.
+
+blas.cache 
+
+From the output, we can see that the program has a low cache miss rate (0.1% for LLd and 0.0% for LL) 
+and a low branch misprediction rate (1.4%). This suggests that the program is well optimized 
+for the cache and branch-prediction behavior.
+
+The program is performing better in terms of cache usage and branch prediction compared to 
+the previous two programs.
+
+_______________________________________________________________________________________________
+
+## Conclusions
+
+* BLAS is the most optimized version
+* While reducing the number of memory allocations can sometimes improve performance, it's not 
+always the most important factor in determining the efficiency of a program.
+
+_______________________________________________________________________________________________
+
+## References
+
+1. https://netlib.org/blas/faq.html
+2. https://netlib.org/lapack/lug/
+3. https://ocw.cs.pub.ro/courses/asc/laboratoare/05
+4. https://www.ibm.com/docs/en/xcfbg/121.141?topic=blas-function-syntax
 
 _______________________________________________________________________________________________
