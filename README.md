@@ -24,7 +24,7 @@ ________________________________________________________________________________
 * Returns a pointer to the result matrix or NULL if there are NaN or 
 infinity values or memory allocation fails.
 
-Using extra_input the following values will be obtained:
+Using _**extra_input**_ the following values will be obtained:
 ___________________________
 
     N=400: Time=0.040290
@@ -69,7 +69,7 @@ matrix operations.
 * The matrix computations are performed using pointer arithmetic and register optimization.
 * The code returns the resulting matrix C as a double pointer.
 
-Using extra_input the following values will be obtained:
+Using _**extra_input**_ the following values will be obtained:
 
 ___________________________
 
@@ -123,7 +123,7 @@ The code defines a set of functions for matrix operations:
 The main function my_solver performs matrix multiplication, transposition, 
 and addition operations to compute the matrix C, which is the sum of two other matrices.
 
-Using extra_input the following values will be obtained:
+Using _**extra_input**_ the following values will be obtained:
 
 ___________________________
 
@@ -153,5 +153,33 @@ ___________________________
     
     N=1600: Time=91.181343
 ___________________________
+
+    extra_input:
+
+    13
+    400 123 out1
+    500 123 out2
+    600 123 out3
+    700 123 out4
+    800 456 out5
+    900 456 out6
+    1000 456 out7
+    1100 456 out8
+    1200 789 out9
+    1300 789 out10
+    1400 789 out11
+    1500 789 out12
+    1600 789 out13
+
+_______________________________________________________________________________________________
+
+## Graph
+
+To create the graph, I created a python script, plot_functions.py
+
+![graph](https://github.com/adinaamzarescu/Tema2_ASC/blob/main/grafice/graph.png)
+
+Overall, the graph shows that the blas function is the most efficient, 
+followed by opt, and then neopt.
 
 _______________________________________________________________________________________________
