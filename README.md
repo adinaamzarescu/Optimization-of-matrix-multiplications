@@ -108,4 +108,50 @@ designed for linear algebra operations.
 
 **The non-optimized version implementation**
 
+`the code is found in solver_neopt.c`
+
+The code defines a set of functions for matrix operations:
+
+1. allocate_matrix: allocates memory for a matrix of a given size.
+2. free_matrices: frees the memory allocated for multiple matrices.
+3. allocate_all_matrices: allocates memory for all matrices required in the computation.
+4. matrix_multiplication: performs matrix multiplication of two matrices.
+5. multiply_A_B_A_transpose: multiplies the resulting matrix from step 1 with the transpose of another matrix.
+6. multiply_B_B_transpose: multiplies the transpose of a matrix with itself.
+7. add_matrices: adds two matrices.
+
+The main function my_solver performs matrix multiplication, transposition, 
+and addition operations to compute the matrix C, which is the sum of two other matrices.
+
+Using extra_input the following values will be obtained:
+
+___________________________
+
+    N=400: Time=1.118085
+    
+    N=500: Time=2.190298
+    
+    N=600: Time=3.891463
+    
+    N=700: Time=5.948505
+    
+    N=800: Time=9.445211
+    
+    N=900: Time=12.603328
+    
+    N=1000: Time=16.913977
+    
+    N=1100: Time=22.865772
+    
+    N=1200: Time=30.707788
+    
+    N=1300: Time=43.487358
+    
+    N=1400: Time=53.864227
+    
+    N=1500: Time=72.666016
+    
+    N=1600: Time=91.181343
+___________________________
+
 _______________________________________________________________________________________________
