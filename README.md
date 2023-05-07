@@ -25,20 +25,35 @@ ________________________________________________________________________________
 infinity values or memory allocation fails.
 
 Using extra_input the following values will be obtained:
+___________________________
 
-N=400: Time=0.040290
-N=500: Time=0.080949
-N=600: Time=0.131025
-N=700: Time=0.198116
-N=800: Time=0.285428
-N=900: Time=0.396836
-N=1000: Time=0.561678
-N=1100: Time=0.734086
-N=1200: Time=0.934723
-N=1300: Time=1.169696
-N=1400: Time=1.431724
-N=1500: Time=1.822059
-N=1600: Time=2.179854
+    N=400: Time=0.040290
+
+    N=500: Time=0.080949
+
+    N=600: Time=0.131025
+
+    N=700: Time=0.198116
+
+    N=800: Time=0.285428
+
+    N=900: Time=0.396836
+
+    N=1000: Time=0.561678
+
+    N=1100: Time=0.734086
+
+    N=1200: Time=0.934723
+
+    N=1300: Time=1.169696
+
+    N=1400: Time=1.431724
+
+    N=1500: Time=1.822059
+
+    N=1600: Time=2.179854
+
+___________________________
 
 This code is efficient because it uses the Basic Linear Algebra Subprograms (BLAS) library 
 functions, specifically cblas_dtrmm and cblas_dgemm, which are highly optimized for 
