@@ -6,58 +6,53 @@
 
 double dot_product(double *a, double *b, int n) {
     register double s = 0.0; // Initialize the dot product to 0
-    register int i; // Declare the loop variable i as an int
-    for (i = 0; i < n; ++i) { // Loop over the elements in the arrays
-        s += a[i] * b[i]; // Add the product of the corresponding elements to the dot product
+    for (register int i = 0; i < n; ++i) { // Loop over the elements in the arrays
+        s += *a++ * *b++; // Add the product of the corresponding elements to the dot product
     }
     return s; // Return the dot product
 }
 
 void multiply_matrices(double *a, double *b, double *c, int n) {
-    register int i, j; // Declare loop variables i and j as ints
-    for (i = 0; i < n; ++i) { // Loop over the rows of the first matrix
-        for (j = 0; j < n; ++j) { // Loop over the columns of the second matrix
+    for (register int i = 0; i < n; ++i) { // Loop over the rows of the first matrix
+        for (register int j = 0; j < n; ++j) { // Loop over the columns of the second matrix
             // Compute the dot product of the i-th row of the first matrix and the j-th column of the second matrix,
             // and store the result in the corresponding element of the resulting matrix
-            c[i * n + j] = dot_product(a + i * n, b + j, n);
+            *c++ = dot_product(a + i * n, b + j, n);
         }
     }
 }
 
 void multiply_a_b_a_transpose(double *a, double *b, double *c, int n) {
-    register int i, j; // Declare loop variables i and j as ints
-    for (i = 0; i < n; ++i) { // Loop over the rows of the first matrix
-        for (j = 0; j < n; ++j) { // Loop over the columns of the second matrix
+    for (register int i = 0; i < n; ++i) { // Loop over the rows of the first matrix
+        for (register int j = 0; j < n; ++j) { // Loop over the columns of the second matrix
             // Compute the dot product of the i-th row of the first matrix, and the j-th column of the second matrix
             // up to the diagonal element, since the rest is zero due to the transpose operation.
-            c[i * n + j] = dot_product(a + i * n, b + j * n, n - j);
+            *c++ = dot_product(a + i * n, b + j * n, n - j);
         }
     }
 }
 
 void multiply_b_transpose_b(double *b, double *c, int n) {
-    register int i, j; // Declare loop variables i and j as ints
-    for (i = 0; i < n; ++i) { // Loop over the rows of the matrix
-        for (j = 0; j < n; ++j) { // Loop over the columns of the matrix
+    for (register int i = 0; i < n; ++i) { // Loop over the rows of the matrix
+        for (register int j = 0; j < n; ++j) { // Loop over the columns of the matrix
             // Compute the dot product of the j-th column and the i-th column (i.e., the transpose of the i-th row)
-            c[i * n + j] = dot_product(b + j * n, b + i, n);
+            *c++ = dot_product(b + j * n, b + i, n);
         }
     }
 }
 
 void compute_C(double* A_B_A_transpose, double* B_B_transpose, double* C, int N) {
-    register int i, j; // Declare loop variables i and j as ints
-    for (i = 0; i < N; ++i) { // Loop over the rows of the matrix
-        for (j = 0; j < N; ++j) { // Loop over the columns of the matrix
+    for (register int i = 0; i < N; ++i) { // Loop over the rows of the matrix
+        for (register int j = 0; j < N; ++j) { // Loop over the columns of the matrix
             // Compute the sum of corresponding elements of matrices A_B_A_transpose and B_B_transpose
-            C[i * N + j] = A_B_A_transpose[i * N + j] + B_B_transpose[i * N + j];
+            *C++ = *A_B_A_transpose++ + *B_B_transpose++;
         }
     }
 }
 
 double* allocate_matrix(int rows, int cols)
 {
-    double* ptr = malloc(rows * cols * sizeof(double));
+    double* ptr = calloc(rows * cols, sizeof(double));
     if (ptr == NULL) {
         // printf("Error: failed to allocate memory for %d x %d matrix\n", rows, cols);
         exit(EXIT_FAILURE);
