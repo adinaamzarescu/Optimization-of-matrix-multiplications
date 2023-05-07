@@ -203,13 +203,13 @@ ________________________________________________________________________________
 
 ## Cache
 
-neopt.cache
+`neopt.cache`
 
 The output shows that the program made 1,545 instruction cache misses and 113,277 data cache 
 misses, which is a very low miss rate considering the program executed 5,924,927,018 
 instructions and accessed 2,962,907,725 data references. 
 
-opt_m.cache 
+`opt_m.cache`
 
 The cache statistics show that the program has a very low instruction and data cache miss rate, 
 which is good for performance. However, the program has a high branch misprediction rate, which 
@@ -218,7 +218,7 @@ could be a performance bottleneck.
 However the program has improved in terms of cache misses and branch mispredictions compared 
 to the previous version.
 
-blas.cache 
+`blas.cache`
 
 From the output, we can see that the program has a low cache miss rate (0.1% for LLd and 0.0% for LL) 
 and a low branch misprediction rate (1.4%). This suggests that the program is well optimized 
