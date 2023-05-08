@@ -275,3 +275,27 @@ ________________________________________________________________________________
 4. https://www.ibm.com/docs/en/xcfbg/121.141?topic=blas-function-syntax
 
 _______________________________________________________________________________________________
+
+## Feedback
+
+While I find the project very useful and helped me better understand the ways of 
+optimization, I have some suggestions that could help in the future:
+
+1. Connecting to Nehalem was difficult and I encountered many problems. 
+I think that a section that would explain the connection method more explicitly 
+and the possible solutions to the problems would help a lot.
+
+2. The testing was not explained that well. initially I thought that 
+the output files generate the results for all the functions. I uploaded the project to
+vmchecker to find out later that the results were not correct for all 3 functions and 
+I had to upload again.
+
+3. The queue on vmchecker is very long and although I know that this cannot be 
+changed, it would help if the checker on vmchecker was also in the archive with 
+the skeleton. There are special tests for valgrind and cache and I think they 
+would be useful locally to avoid repeated loading of the archive.
+
+4. I really liked the project and I think the homework team did a great job. 
+You answered quickly on the forum and the explanations were clear. Thank you for that.
+
+_______________________________________________________________________________________________
